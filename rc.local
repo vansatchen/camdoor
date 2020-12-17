@@ -1,0 +1,7 @@
+# Backsplash for display
+echo 18 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio18/direction
+# Disable cursor
+echo 0 > /sys/class/graphics/fbcon/cursor_blink
+# Framebuffer
+/path/to/fbcp &

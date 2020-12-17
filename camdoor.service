@@ -1,0 +1,12 @@
+[Unit]
+Description=Camera on display and mjpeg-stream via python3
+
+[Service]
+ExecStart=/usr/bin/python3 /path/to/picamMjpeg.py
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+Type=notify
+User=user #groups: video input gpio
+
+[Install]
+WantedBy=default.target
