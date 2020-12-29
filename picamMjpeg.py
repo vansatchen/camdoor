@@ -77,6 +77,13 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                 logging.warning(
                     'Removed streaming client %s: %s',
                     self.client_address, str(e))
+        elif self.path == '/snap.jpg':
+            frame = output.frame
+            self.send_response(200)
+            self.send_header('Content-Type', 'image/jpeg')
+            self.send_header('Content-Length', len(frame))
+            self.end_headers()
+            self.wfile.write(frame)
         else:
             self.send_error(404)
             self.end_headers()
